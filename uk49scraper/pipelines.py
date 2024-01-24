@@ -45,7 +45,6 @@ class SaveToFirebasePipeline:
         # Firestore - create collection and store data
         draw_date = adapter.get('date')
         dd_list = draw_date.split('-')      # ['YYYY', 'MM', 'DD']
-        print(f'========>>   {dd_list}')
 
         # Firebase --> collection references
         month_ref = db.collection(f'results-{months[int(dd_list[1])]}')

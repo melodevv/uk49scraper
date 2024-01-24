@@ -7,6 +7,7 @@
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
 
+# Firebase packages used
 import firebase_admin
 from firebase_admin import credentials, firestore
 
@@ -29,13 +30,13 @@ class Uk49ScraperPipeline:
 class SaveToFirebasePipeline:
     def __init__(self):
         # Firebase --> initialization
-        self.cred = credentials.Certificate("./ned-app-key.json")
+        self.cred = credentials.Certificate("YOUR-SERVICE-ACCOUNT-KEY")
         firebase_admin.initialize_app(self.cred)
     
     def process_item(self, item, spider):
         adapter = ItemAdapter(item)
         
-        # Months from July to December
+        # Months --> the months that have been scraped
         months = {10: 'oct', 11: 'nov', 12: 'dec'}
 
         # connect firestore
